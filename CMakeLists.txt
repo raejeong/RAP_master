@@ -161,3 +161,21 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+include_directories(include ${catkin_INCLUDE_DIRS})
+
+add_executable(RAP_teleop_joy src/RAP_teleop_joy.cpp)
+target_link_libraries(RAP_teleop_joy ${catkin_LIBRARIES})
+add_dependencies(RAP_teleop_joy RAP_master_generate_messages_cpp)
+
+add_executable(set_multiple_position src/set_multiple_position.cpp)
+target_link_libraries(set_multiple_position ${catkin_LIBRARIES})
+add_dependencies(set_multiple_position RAP_master_generate_messages_cpp)
+
+add_executable(print_joint_positions src/print_joint_positions.cpp)
+target_link_libraries(print_joint_positions ${catkin_LIBRARIES})
+add_dependencies(print_joint_positions RAP_master_generate_messages_cpp)
+
+add_executable(position_loop src/position_loop.cpp)
+target_link_libraries(position_loop ${catkin_LIBRARIES})
+add_dependencies(position_loop RAP_master_generate_messages_cpp)
